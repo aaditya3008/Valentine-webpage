@@ -2,73 +2,185 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Valentine</title>
-    <link href="style.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <script src="main.js" defer></script>
 </head>
+
 <body>
+
+    <!-- Background Audio -->
     <audio id="bgaudio" loop>
         <source src="" type="audio/mpeg">
     </audio>
-    </div>
+
+    <!-- Background Video -->
     <div class="big">
         <video muted loop autoplay playsinline>
             <source src="background.mp4" type="video/mp4">
         </video>
     </div>
+
+    <!-- ================= SECTION 1 ================= -->
     <div id="sec1">
-    <div id ="main">
-        <div class="card">
-            <h1 class="question">Will You Be My Valantine ?</h1>
+        <div id="main">
+            <div class="card">
+                <h1 class="question">Will You Be My Valentine?</h1>
+            </div>
+
+            <div class="button1">
+                <button id="yesBtn">YESS 💗</button>
+                <button id="noBtn">NOO 👎</button>
+            </div>
         </div>
-                    <div class="button1">
-                <button id="yesBtn">YESS   💗</button>
-                <button id="noBtn">NOO   👎</button>
+
+        <div id="noMess"></div>
+    </div>
+
+    <!-- ================= SECTION 2 ================= -->
+    <div id="sec2">
+
+        <!-- ===== NOTES SECTION ===== -->
+        <section class="notes-section">
+            <h1 class="notes-title"><i>Things I Never Sent</i></h1>
+
+            <div class="notes-grid">
+
+                <div class="note" data-note="Full text of note 1">
+                    <p>Short preview 1…</p>
+                </div>
+
+                <div class="note" data-note="Full text of note 2">
+                    <p>Short preview 2…</p>
+                </div>
+
+                <div class="note" data-note="Full text of note 3">
+                    <p>Short preview 3…</p>
+                </div>
+
+                <div class="note" data-note="Full text of note 4">
+                    <p>Short preview 4…</p>
+                </div>
+
+                <div class="note" data-note="Full text of note 5">
+                    <p>Short preview 5…</p>
+                </div>
+
+                <div class="note" data-note="Full text of note 6">
+                    <p>Short preview 6…</p>
+                </div>
+
             </div>
+        </section>
+
+        <!-- ===== NAVIGATION BUTTONS ===== -->
+        <section class="choice-section">
+            <button id="openMemories">Visit Our Memories 💕</button>
+            <button id="openLetter">Read The Letter ✉️</button>
+        </section>
+
+        <!-- ===== NOTE OVERLAY ===== -->
+        <div class="note-overlay hidden">
+            <div class="note-focus">
+                <p id="focusText"></p>
             </div>
-            <div id="noMess"></div>
+        </div>
+
+        <!-- ================= MEMORY SLIDER (HIDDEN INITIALLY) ================= -->
+        <section id="memorySection" class="hidden">
+
+            <h2 class="section-title">Our Memories</h2>
+
+            <div id="memory-slider">
+
+                <div class="slider-container">
+
+                    <div class="slide active">
+                        <img src="images/m1.jpg" alt="Memory 1">
+                        <p class="caption">That first silly selfie.</p>
+                    </div>
+
+                    <div class="slide">
+                        <img src="images/m2.jpg" alt="Memory 2">
+                        <p class="caption">The temple day glow.</p>
+                    </div>
+
+                    <div class="slide">
+                        <video controls preload="metadata">
+                            <source src="videos/v1.mp4" type="video/mp4">
+                        </video>
+                        <p class="caption">That chaotic laugh moment.</p>
+                    </div>
+
+                    <div class="slide">
+                        <img src="images/m3.jpg" alt="Memory 3">
+                        <p class="caption">Fields felt endless that day.</p>
+                    </div>
+
+                    <div class="slide">
+                        <video controls preload="metadata">
+                            <source src="videos/v2.mp4" type="video/mp4">
+                        </video>
+                        <p class="caption">The painting chaos memory.</p>
+                    </div>
+
+                    <div class="slide">
+                        <img src="images/m4.jpg" alt="Memory 4">
+                        <p class="caption">Our accidental matching colors.</p>
+                    </div>
+
+                    <div class="slide">
+                        <video controls preload="metadata">
+                            <source src="videos/v3.mp4" type="video/mp4">
+                        </video>
+                        <p class="caption">That quiet slow moment.</p>
+                    </div>
+
+                    <div class="slide">
+                        <img src="images/m5.jpg" alt="Memory 5">
+                        <p class="caption">The handprint promise day.</p>
+                    </div>
+
+                </div>
+
+                <!-- Navigation -->
+                <div class="slider-nav">
+                    <button id="prevSlide">&#10094;</button>
+                    <button id="nextSlide">&#10095;</button>
+                </div>
+
+                <div class="slider-dots"></div>
+
             </div>
-       
-    <div id ="sec2"> 
-<section class="notes-section">
-  <h1 class="notes-title"><b><i>Things I Never Sent</i> </b></h1>
 
-  <div class="notes-grid">
+            <!-- Back Button -->
+            <div class="back-nav">
+                <button id="backToNotesFromMemory">Back To Notes</button>
+            </div>
 
-    <div class="note" data-note="Full text of note 1 goes here" data-bg="">
-      <p>Short preview note 1…</p>
+        </section>
+
+        <!-- ================= LETTER SECTION (HIDDEN INITIALLY) ================= -->
+        <section id="letterSection" class="hidden">
+
+            <h2 class="section-title">A Letter For You</h2>
+
+            <div class="letter-container">
+                <p>
+                    Write your long emotional letter here...
+                    This can be multiple paragraphs.
+                    Keep it personal and honest.
+                </p>
+            </div>
+
+            <div class="back-nav">
+                <button id="backToNotesFromLetter">Back To Notes</button>
+            </div>
+
+        </section>
+
     </div>
 
-    <div class="note" data-note="Full text of note 2 goes here" data-bg="">
-      <p>Short preview note 2…</p>
-    </div>
-
-    <div class="note" data-note="Full text of note 3 goes here" data-bg="">
-      <p>Short preview note 3…</p>
-    </div>
-
-    <div class="note" data-note="Full text of note 4 goes here" data-bg="">
-      <p>Short preview note 4…</p>
-    </div>
-
-    <div class="note" data-note="Full text of note 5 goes here" data-bg="">
-      <p>Short preview note 5…</p>
-    </div>
-
-    <div class="note" data-note="Full text of note 6 goes here" data-bg="">
-      <p>Short preview note 6…</p>
-    </div>
-
-  </div>
-</section>
-
-<!-- Focus Overlay -->
-<div class="note-overlay hidden">
-  <div class="note-focus">
-    <p id="focusText"></p>
-  </div>
-</div>
-</div>
 </body>
 </html>

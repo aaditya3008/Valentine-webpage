@@ -2,26 +2,20 @@
    GLOBAL
 ========================= */
 
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
-  height: 100vh;
-  line-height: 1.4;
   font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.4;
+  background: #FFF8F2;
 }
 
 /* =========================
-   MAIN SECTION
+   BACKGROUND VIDEO
 ========================= */
-
-#main {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  z-index: 3;
-}
 
 .big {
   position: fixed;
@@ -37,25 +31,33 @@ body {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  opacity: 0.43;
+  opacity: 0.35;
 }
 
 /* =========================
-   CARD
+   SECTION 1 (YES / NO)
 ========================= */
 
+#main {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 .card {
-  background: rgb(250, 247, 249);
+  background: #FAF7F9;
   padding: 50px 20px;
   border-radius: 16px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
   text-align: center;
   max-width: 350px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
 }
 
 .question {
   font-size: 26px;
-  color: rgb(255, 0, 230);
+  color: #E889B5;
   margin-bottom: 25px;
 }
 
@@ -63,39 +65,32 @@ body {
   display: flex;
   gap: 15px;
   justify-content: center;
+  margin-top: 20px;
 }
 
 button {
-  height: 46px;
-  padding: 0 26px;
-  font-size: 16px;
-  font-weight: 600;
+  padding: 12px 26px;
   border-radius: 999px;
+  font-size: 14px;
+  font-weight: 600;
   cursor: pointer;
-  border: 1px solid #ff00aec1;
-  letter-spacing: 0.6px;
-  box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.25);
+  border: 1px solid #E889B5;
   transition: 0.2s ease;
 }
 
 #yesBtn {
-  background-color: #E889B5;
-  color: #FFF6F0;
+  background: #E889B5;
+  color: white;
 }
 
 #noBtn {
-  background-color: whitesmoke;
+  background: white;
   color: #E889B5;
 }
 
 #yesBtn:hover,
 #noBtn:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.5);
-}
-
-#sec2 {
-  display: none;
+  transform: translateY(-4px);
 }
 
 /* =========================
@@ -104,14 +99,22 @@ button {
 
 #noMess {
   position: fixed;
-  border: 2px solid rgb(222, 66, 159);
-  background: #FFF6F0;
-  padding: 10px;
-  border-radius: 16px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-  text-align: center;
+  background: white;
+  border: 1px solid #E889B5;
+  padding: 10px 14px;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
   z-index: 1000;
-  transition: 0.8s ease;
+  transition: 0.6s ease;
+}
+
+/* =========================
+   SECTION 2
+========================= */
+
+#sec2 {
+  display: none;
+  padding-bottom: 60px;
 }
 
 /* =========================
@@ -119,78 +122,49 @@ button {
 ========================= */
 
 .notes-section {
-  padding: 1.5rem 1rem;
+  padding: 40px 20px;
 }
 
 .notes-title {
   text-align: center;
-  margin-bottom: 1.5rem;
-  font-size: 1.2rem;
+  margin-bottom: 30px;
   font-weight: 500;
 }
 
 .notes-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 1rem;
+  gap: 15px;
 }
-
-/* =========================
-   NOTE CARD
-========================= */
 
 .note {
+  background: white;
+  padding: 14px;
   border-radius: 12px;
-  padding: 0.9rem;
   cursor: pointer;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  position: relative;
-  min-height: 90px;
-  display: flex;
-  align-items: center;
-  color: #4a3f35;
-  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.06);
+  font-size: 14px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
 }
 
-.note::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: rgba(255, 255, 255, 0.4);
-  border-radius: 12px;
-}
-
-.note p {
-  margin: 0;
-  font-size: 0.9rem;
-  line-height: 1.4;
-  position: relative;
-  z-index: 2;
-
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
+.note:hover {
+  transform: translateY(-3px);
 }
 
 /* =========================
-   OVERLAY ANIMATION
+   NOTE OVERLAY
 ========================= */
 
 .note-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0,0,0,0.5);
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 1rem;
-  z-index: 2000;
-
+  padding: 20px;
   opacity: 0;
-  transition: opacity 0.3s ease;
+  transition: 0.3s ease;
+  z-index: 2000;
 }
 
 .note-overlay.active {
@@ -198,17 +172,14 @@ button {
 }
 
 .note-focus {
-  background: #ffffff;
+  background: white;
+  padding: 24px;
   border-radius: 16px;
-  padding: 1.5rem;
   max-width: 400px;
   width: 100%;
-  max-height: 80vh;
-  overflow-y: auto;
-
   transform: scale(0.9);
   opacity: 0;
-  transition: transform 0.3s ease, opacity 0.3s ease;
+  transition: 0.3s ease;
 }
 
 .note-overlay.active .note-focus {
@@ -216,17 +187,169 @@ button {
   opacity: 1;
 }
 
-.note-focus p {
-  margin: 0;
-  line-height: 1.6;
-  font-size: 1rem;
+/* =========================
+   CHOICE BUTTONS
+========================= */
+
+.choice-section {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin: 30px 0;
+  flex-wrap: wrap;
+}
+
+.choice-section button {
+  background: #E889B5;
+  color: white;
+  border: none;
 }
 
 /* =========================
-   HIDDEN
+   MEMORY SECTION
+========================= */
+
+#memorySection {
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.section-title {
+  margin-bottom: 25px;
+  font-weight: 500;
+}
+
+#memory-slider {
+  max-width: 360px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.slider-container {
+  overflow: hidden;
+}
+
+.slide {
+  display: none;
+  padding: 10px;
+}
+
+.slide.active {
+  display: block;
+}
+
+.slide img,
+.slide video {
+  width: 100%;
+  border-radius: 14px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+.caption {
+  margin-top: 10px;
+  font-size: 14px;
+  color: #6B5E55;
+}
+
+/* Slider Arrows */
+
+.slider-nav button {
+  position: absolute;
+  top: 45%;
+  transform: translateY(-50%);
+  background: #E889B5;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+#prevSlide {
+  left: -10px;
+}
+
+#nextSlide {
+  right: -10px;
+}
+
+/* Dots */
+
+.slider-dots {
+  margin-top: 10px;
+  text-align: center;
+}
+
+.slider-dots span {
+  height: 8px;
+  width: 8px;
+  margin: 0 4px;
+  background: #ddd;
+  display: inline-block;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.slider-dots .active-dot {
+  background: #E889B5;
+}
+
+/* =========================
+   LETTER SECTION
+========================= */
+
+#letterSection {
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.letter-container {
+  max-width: 500px;
+  margin: 0 auto;
+  background: white;
+  padding: 30px;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+  text-align: left;
+  line-height: 1.7;
+  font-size: 15px;
+  color: #4a3f35;
+}
+
+/* =========================
+   BACK BUTTONS
+========================= */
+
+.back-nav {
+  margin-top: 30px;
+}
+
+.back-nav button {
+  background: #E889B5;
+  color: white;
+  border: none;
+}
+
+/* =========================
+   HIDDEN CLASS
 ========================= */
 
 .hidden {
   display: none;
 }
 
+/* =========================
+   MOBILE RESPONSIVE
+========================= */
+
+@media (max-width: 480px) {
+
+  .notes-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .slider-nav button {
+    padding: 6px 10px;
+  }
+
+}
