@@ -10,11 +10,10 @@ body {
   margin: 0;
   font-family: Arial, Helvetica, sans-serif;
   line-height: 1.4;
-  background: #FFF8F2;
 }
 
 /* =========================
-   BACKGROUND VIDEO
+   BACKGROUND VIDEO (RESTORED)
 ========================= */
 
 .big {
@@ -23,7 +22,7 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: -1;
+  z-index: -3;
   overflow: hidden;
 }
 
@@ -31,7 +30,7 @@ body {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  opacity: 0.35;
+  opacity: 0.5; /* original soft visibility */
 }
 
 /* =========================
@@ -105,7 +104,7 @@ button {
   border-radius: 12px;
   box-shadow: 0 8px 20px rgba(0,0,0,0.15);
   z-index: 1000;
-  transition: 0.6s ease;
+  transition: 0.9s ease;
 }
 
 /* =========================
@@ -163,7 +162,7 @@ button {
   align-items: center;
   padding: 20px;
   opacity: 0;
-  transition: 0.3s ease;
+  transition: 0.5s ease;
   z-index: 2000;
 }
 
@@ -179,7 +178,7 @@ button {
   width: 100%;
   transform: scale(0.9);
   opacity: 0;
-  transition: 0.3s ease;
+  transition: 0.5s ease;
 }
 
 .note-overlay.active .note-focus {
@@ -219,39 +218,76 @@ button {
   font-weight: 500;
 }
 
+/* Larger mobile presence */
 #memory-slider {
-  max-width: 360px;
+  width: 95%;
+  max-width: 420px;
   margin: 0 auto;
   position: relative;
 }
 
-.slider-container {
-  overflow: hidden;
-}
+/* =========================
+   SLIDE CARD (GLASS + GLOW + ZOOM)
+========================= */
 
 .slide {
   display: none;
-  padding: 10px;
+
+  padding: 24px;
+  border-radius: 24px;
+
+  /* Glass effect */
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+
+  border: 1px solid rgba(255, 255, 255, 0.6);
+
+  /* Pink glow shadow */
+  box-shadow:
+    0 30px 60px rgba(0, 0, 0, 0.1),
+    0 0 40px rgba(232, 137, 181, 0.3);
+
+  transform: scale(0.95);
+  opacity: 0;
 }
 
 .slide.active {
   display: block;
+  animation: zoomInSlide 0.5s ease forwards;
 }
 
+@keyframes zoomInSlide {
+  from {
+    transform: scale(0.70);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Media styling */
 .slide img,
 .slide video {
   width: 100%;
-  border-radius: 14px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  border-radius: 18px;
+  display: block;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.12);
 }
 
+/* Caption */
 .caption {
-  margin-top: 10px;
-  font-size: 14px;
+  margin-top: 14px;
+  font-size: 15px;
+  font-weight: 500;
   color: #6B5E55;
 }
 
-/* Slider Arrows */
+/* =========================
+   SLIDER NAVIGATION
+========================= */
 
 .slider-nav button {
   position: absolute;
@@ -274,7 +310,6 @@ button {
 }
 
 /* Dots */
-
 .slider-dots {
   margin-top: 10px;
   text-align: center;
@@ -331,7 +366,7 @@ button {
 }
 
 /* =========================
-   HIDDEN CLASS
+   HIDDEN
 ========================= */
 
 .hidden {
@@ -348,8 +383,8 @@ button {
     grid-template-columns: 1fr;
   }
 
-  .slider-nav button {
-    padding: 6px 10px;
+  #memory-slider {
+    width: 100%;
   }
 
 }
