@@ -44,13 +44,13 @@ const politeMessage = [
 
 const teasingMessage = [
   "Really?",
-  "You're making this harder.",
+  "go for yes look its so beutiful.",
   "Last chance!"
 ];
 
 const dramaticMessage = [
-  "Still no?",
-  "This is getting serious.",
+  "mujhe mana kaise kar sakte ho aap 😡",
+  "yesssssss karoo naaaaaa🥹",
   "I am not giving up."
 ];
 
